@@ -17,7 +17,7 @@ int main(void){
       A[i].resize(N);
       for(int j=0;j<N;j++)cin>>A[i][j];
    }
-   auto tmp=eigen_export(A,iter);
+   auto tmp=eigen_export(A,iter,1);
    
    for(int i=0;i<tmp.size();i++)cout<<tmp[i].value<<" ";
    cout<<"\n";

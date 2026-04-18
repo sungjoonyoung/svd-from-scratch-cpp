@@ -16,7 +16,7 @@ typedef struct {
 vector<element>v;
 vector<eigen> eigen_v;
 
-auto eigen_export(const vector<vector<double>>&A,int max_iter=1000){
+auto eigen_export(const vector<vector<double>>&A,int max_iter=1000,bool sortop=0){
    // QR algorithm
    v.push_back(element());
    v[0].A=A;
@@ -47,7 +47,13 @@ auto eigen_export(const vector<vector<double>>&A,int max_iter=1000){
    // for(int i=0;i<eigen_v.size();i++){
    //    print_1D(eigen_v[i].vector);
    // }
-   
+   if(sortop){ //몰라 지금은 개 느린 버블 정렬할 거임
+      for(int i=0;i<eigen_v.size();i++){
+         for(int j=0;j<eigen_v.size()-1;j++){
+            if(eigen_v[j].value<eigen_v[j+1].value)swap(eigen_v[j],eigen_v[j+1]);
+         }
+      }
+   }
    return eigen_v;
 }
 /*
