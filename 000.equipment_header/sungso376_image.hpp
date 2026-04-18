@@ -168,7 +168,7 @@ vector<vector<double>> image_func(ifstream& fin){
     return answer;
 }
 
-void saveBMP(const string& filename, const vector<vector<double>>& img) {
+void saveBMP(ofstream &fout, const vector<vector<double>>& img) {
     int H = img.size();
     int W = img[0].size();
 
@@ -195,8 +195,8 @@ void saveBMP(const string& filename, const vector<vector<double>>& img) {
     uint32_t biClrUsed = 0;
     uint32_t biClrImportant = 0;
 
-    ofstream fout(filename, ios::binary);
-    if (!fout) throw runtime_error("File open failed");
+    // ofstream fout(filename, ios::binary);
+    // if (!fout) throw runtime_error("File open failed");
 
     // file header
     fout.write((char*)&fh, sizeof(fh));
@@ -228,9 +228,9 @@ void saveBMP(const string& filename, const vector<vector<double>>& img) {
 
             uint8_t gray = (uint8_t)(v * 255.0);
 
-            row[x * 3 + 0] = gray; // B
-            row[x * 3 + 1] = gray; // G
-            row[x * 3 + 2] = gray; // R
+            row[x * 3 + 0] = 255.0-gray; // B
+            row[x * 3 + 1] = 255.0-gray; // G
+            row[x * 3 + 2] = 255.0-gray; // R
         }
 
         // padding 영역 0으로

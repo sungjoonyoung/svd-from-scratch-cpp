@@ -70,7 +70,7 @@ auto percentage_bar(T1 progress, T2 N){
     }
     str+=']';
     str+='(';
-    str+=to_string(progress/N*100);
+    str+=to_string(progress*100/N);
     str+='%';
     // str+=to_string(N);
     str+=")";

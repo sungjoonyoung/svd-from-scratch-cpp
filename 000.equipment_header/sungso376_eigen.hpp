@@ -25,6 +25,7 @@ auto eigen_export(const vector<vector<double>>&A,int max_iter=1000,bool sortop=0
       v.push_back(element());
       v[i].A=mat_mul(v[i-1].QR.R,v[i-1].QR.Q);
       v[i].QR=QRD_GS(v[i].A);
+      if(i%10==0)cout<<progress_bar(i,max_iter)<<" "<<percentage_bar(i,max_iter)<<"\n";
       //(next)이때 수렴성을 체크하는 추가적인 에러를 찾아야 함
    }
    // eigen value
