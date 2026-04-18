@@ -19,7 +19,7 @@ int main(void){
    }
    //
    auto ATA=mat_mul(mat_transpose(A),A);
-   auto eigen_ATA=eigen_export(ATA,1'000,1);
+   auto eigen_ATA=eigen_export(ATA,iter,1);
    for(int i=0;i<eigen_ATA.size();i++)big_S.push_back(eigen_ATA[i].value);
    for(int i=0;i<eigen_ATA.size();i++)big_V.push_back(eigen_ATA[i].vector);
    big_U=mat_transpose(mat_mul(A,mat_transpose(big_V)));
@@ -47,4 +47,11 @@ int main(void){
 1 2 3
 5 4 1
 5 3 1
+*/
+
+/*
+1 5 2 6
+7 4 2 1
+5 8 5 3
+6 2 1 8
 */
