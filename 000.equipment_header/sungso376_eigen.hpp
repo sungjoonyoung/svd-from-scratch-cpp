@@ -25,10 +25,13 @@ auto eigen_export(const vector<vector<double>>&A,int max_iter=1000,bool sortop=0
       v.push_back(element());
       v[i].A=mat_mul(v[i-1].QR.R,v[i-1].QR.Q);
       v[i].QR=QRD_GS(v[i].A);
+      //(next)이때 수렴성을 체크하는 추가적인 에러를 찾아야 함
    }
    // eigen value
    eigen_v.resize(A.size());
    for(int i=0;i<eigen_v.size();i++) eigen_v[i].value=v.back().A[i][i];
+   //(next)이때 특히 허수 아이젠벡터를 잘 처리해야 함. 이건 나중에 할 것.
+
    // eigen vector
    vector<vector<double>> big_V=mat_identity(A.size());
    for(int i=0;i<v.size();i++){

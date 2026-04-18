@@ -84,6 +84,19 @@ auto vec_to_mat(const vector<double> &v){
     return answer;
 }
 
+// 1D column vector 두개를 v^t*v 를 통해 2D mat 만듦
+auto vecvec_to_mat(const vector<double> &a,const vector<double> &b){
+    vector<vector<double>> answer;
+    answer.resize(a.size());
+    for(int i=0;i<a.size();i++){
+        answer[i].resize(b.size());
+        for(int j=0;j<b.size();j++){
+            answer[i][j]=a[i]*b[j];
+        }
+    }
+    return answer;
+}
+
 // 루트함수 by 뉴턴메서드
 auto sqrt(double x, double error=1e-16, int max_iter=100000){
     if(x<0){
